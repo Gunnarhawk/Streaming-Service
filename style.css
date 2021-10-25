@@ -213,10 +213,12 @@ a {
     height: 100%;
     display: flex;
     align-items: center;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
+    background: rgb(20, 20, 20);
+    background: linear-gradient(
+        0deg,
+        rgba(20, 20, 20, 1) 0%,
+        rgba(255, 255, 255, 0) 36%
+    );
 }
 
 @-webkit-keyframes fadeIn {
@@ -267,16 +269,11 @@ a {
 
 .top .left-side {
     width: 40%;
-    height: 100%;
+    height: 80%;
     padding-left: 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-image: linear-gradient(
-        to right,
-        rgba(51, 51, 51, 0.95),
-        rgba(255, 255, 255, 0.01)
-    );
 }
 
 .top h1 {
@@ -377,6 +374,7 @@ a {
 
 .card-carousel:hover svg {
     color: white;
+    transition: color 0.3s;
 }
 
 .carousel-btn {
@@ -390,6 +388,7 @@ a {
     width: 40px;
     height: 40px;
     color: transparent;
+    transition: color 0.3s;
 }
 
 .carousel-btn svg:hover {
@@ -433,9 +432,144 @@ a {
 
 .card:hover {
     transform: scale(1.3);
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
     transition: transform 0.5s;
     z-index: 1;
+}
+
+.movie-desc {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: calc(100% - 100px);
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    vertical-align: center;
+    justify-content: center;
+    z-index: 10;
+
+    padding: 50px 0px;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(51, 51, 51, 1);
+}
+
+.desc-image {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.desc-image div {
+    width: 100%;
+    height: 100%;
+    background: rgb(51, 51, 51);
+    background: linear-gradient(
+        0deg,
+        rgba(51, 51, 51, 1) 0%,
+        rgba(255, 255, 255, 0) 36%
+    );
+}
+
+.close-btn {
+    background-color: #333;
+    border-radius: 50px;
+    position: relative;
+    z-index: 11;
+}
+
+.close-btn svg {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin-top: 15px;
+    margin-right: 15px;
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    min-height: 30px;
+    padding: 8px;
+    border-radius: 50px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+}
+
+.close-btn svg:hover {
+    transform: scale(1.15);
+}
+
+.desc-top {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 50px);
+    padding: 0px 25px;
+    margin-top: 25px;
+}
+
+.desc-top h1 {
+    font-family: "Bebas Neue", cursive;
+    font-size: 50px;
+    color: white;
+    border-bottom: 5px solid var(--red);
+}
+
+.desc-top .button-selection {
+    display: flex;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.desc-top .button-selection div {
+    padding: 10px 25px;
+}
+
+.desc-top h3 {
+    font-family: "Roboto", sans-serif;
+}
+
+.desc-top svg {
+    width: 25px;
+    height: 25px;
+    margin-left: 15px;
+}
+
+.desc-mid {
+    width: calc(100% - 50px);
+    margin-top: 50px;
+    padding: 0px 25px;
+}
+
+.desc-mid p {
+    font-size: 30px;
+    font-family: "Roboto", sans-serif;
+    color: white;
+}
+
+.desc-bottom {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 50px);
+    margin-top: 50px;
+    padding: 0px 25px;
+}
+
+.desc-bottom .cast {
+    width: 100%;
+    display: flex;
+}
+
+.cast-card {
+    height: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .overlay {
@@ -619,6 +753,63 @@ a {
 }
 /* END FOOTER */
 
+/* MODAL */
+
+.watch-later-modal {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    z-index: 11;
+    background-color: #333;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    display: flex;
+    padding: 20px;
+    border-radius: 9px;
+    align-items: center;
+    display: none;
+}
+
+.watch-later-modal h3 {
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    color: white;
+}
+
+.watch-later-modal .side-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.watch-later-modal .side-buttons svg {
+    width: 35px;
+    min-width: 35px;
+    height: 35px;
+    min-height: 35px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 6px;
+    border-radius: 50px;
+    margin-left: 20px;
+}
+
+.side-buttons svg:hover {
+    background-color: #141414;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.watch-later-modal h3 .playlist {
+    color: var(--red);
+}
+
+.watch-later-modal h3 .movie {
+    color: var(--red);
+}
+
+/* END MODAL */
+
 @media screen and (max-width: 1660px) {
     .top p {
         font-size: 16px;
@@ -642,6 +833,10 @@ a {
     .overlay .button-container {
         margin-bottom: 10px;
         margin-top: 10px;
+    }
+
+    .modal-content {
+        max-width: 800px;
     }
 }
 
@@ -727,6 +922,10 @@ a {
         height: 20px;
         min-width: 20px;
     }
+
+    .modal-content {
+        max-width: 700px;
+    }
 }
 
 @media screen and (max-width: 1045px) {
@@ -778,6 +977,15 @@ a {
     .main-nav {
         margin-left: 30px;
     }
+
+    .movie-desc {
+        padding: 0px;
+        height: 100%;
+    }
+
+    .modal-content {
+        max-width: 100%;
+    }
 }
 
 @media screen and (max-width: 815px) {
@@ -828,6 +1036,19 @@ a {
 
     .bottom .btn-row {
         width: 95%;
+    }
+
+    .desc-top h3 {
+        font-size: 16px;
+    }
+
+    .desc-top svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .desc-mid p {
+        font-size: 25px;
     }
 }
 
@@ -921,6 +1142,19 @@ a {
         text-align: center;
         width: 90%;
         font-size: 12px;
+    }
+
+    .desc-top h3 {
+        font-size: 14px;
+    }
+
+    .desc-top svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .desc-mid p {
+        font-size: 20px;
     }
 }
 
